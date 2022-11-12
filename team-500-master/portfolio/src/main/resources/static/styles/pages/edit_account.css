@@ -1,0 +1,57 @@
+.image-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.image-upload-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #43C0FE;
+    border: none;
+    padding: 8px 12px;
+    transition-duration: 0.4s;
+    font-size: 14px;
+    display: block;
+    user-select: none;
+    width: fit-content;
+}
+
+.image-upload-button:hover {
+    background-color: #0332D1;
+}
+
+.image-upload-comment {
+    font-size: 14px;
+    color: darkgrey;
+}
+
+.imagePreviewOverlayContainer {
+    display: inline-block;
+    position: relative;
+}
+
+.imagePreviewOverlayContainer > .imagePreviewOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background-color: white;
+}
+
+.modal-delete-container{
+    display: none;
+    z-index:1;
+    background-color: rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}

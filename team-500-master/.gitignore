@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+*/.gradle/
+*/build/
+*/.idea/
+*/src/generated/
+*/bin/
+
+localdb/*
+data/*
+subdirectory/*
+identityprovider/config/*
+*.db

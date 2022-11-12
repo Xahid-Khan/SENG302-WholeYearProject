@@ -1,0 +1,23 @@
+.toast {
+    display: flex;
+    flex-direction: row;
+}
+
+.toast .body,
+.toast .before,
+.toast .after {
+    flex: 1;
+}
+
+.toast .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.toast .body .title {
+
+}
+.toast .body .subtitle {
+    font-style: italic;
+}

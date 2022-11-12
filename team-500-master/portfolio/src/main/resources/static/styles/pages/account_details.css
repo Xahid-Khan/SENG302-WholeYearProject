@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.name-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-padding {
+    padding: 75px;
+    margin: 6% 40px;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center
+}
+
+.left-padding {
+    padding-left: 30px;
+}
+
+.right-padding {
+    padding-right: 30px;
+}
+
+.edit-message {
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 748px) {
+    .left-padding {
+        padding-left: 0;
+    }
+
+}
+
+@media only screen and (max-width: 860px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: normal;
+    }
+}

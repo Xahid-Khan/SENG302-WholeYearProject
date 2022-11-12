@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Photo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{styles/common.css}"/>
+    <link rel="stylesheet" th:href="@{styles/pages/account_details.css}"/>
+    <link rel="stylesheet" th:href="@{styles/pages/project_details.css}">
+    <link rel="stylesheet" th:href="@{styles/navbar.css}"/>
+    <link rel="stylesheet" th:href="@{styles/pages/edit_account.css}" />
+    <link rel="stylesheet" th:href="@{styles/croppie.min.css}"/>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.localStorage.setItem("globalImagePath", [[${globalImagePath}]] + "")
+        window.localStorage.setItem("globalUrlPathPrefix", [[${globalUrlPathPrefix}]] + "")
+        /*]]>*/
+    </script>
+    <script type="text/javascript" th:src="@{frontend/navbar.js}" defer></script>
+    <script type="text/javascript" th:src="@{frontend/cropping_image.js}" defer></script>
+    <script type="text/javascript" th:src="@{frontend/navbar_entry.js}"></script>
+    <script type="text/javascript" th:src="@{scripts/navbar.js}"></script>
+</head>
+<body>
+<div id="navbar-react-root"></div>
+
+<div class="raised-card card-padding" style="display: grid; justify-content: center;">
+    <div id="headingAndButton">
+        <h1 class="edit-title" style="float: left;">Edit User Photo</h1>
+        <form id="deletePhotoForm" action="#" th:action="@{edit_account/imageDelete}" method="post"
+              style="float:right; margin-left: 4px">
+            <button type="button" id="deleteUserPhoto" class="button" style="float: right; margin-top: 25px;">
+                Delete Photo
+            </button>
+            <button type="submit" id="deletePhotoSubmissionForm" style="display: none" hidden></button>
+        </form>
+    </div>
+
+    <div id="mainImageDiv" style="display: flex">
+        <div class="edit-crop-photo">
+            <div id="croppie"></div>
+        </div>
+        <div class="edit-crop-photo" style="border: 2px solid #7f7e82; width: 300px; height: 300px">
+            <h3 id="previewText" hidden="true">Preview Box</h3>
+            <img th:src="'//' + ${globalImagePath} + ${userId}" id="userProfileImage" th:name="imageData"
+                 onerror="this.onerror=null; this.hidden='true'; document.getElementById('deleteUserPhoto').setAttribute('disabled', 'true');
+                 document.getElementById('previewText').removeAttribute('hidden'); " width="300" height="300">
+        </div>
+
+        <input id="newCroppedUserImage" name="croppedUserImage" value="" hidden/>
+    </div>
+    <div>
+        <div style="min-height: 40px">
+            <div id="image-preview-warning" style="color: darkorange; margin-bottom: 8px" hidden class="form-error"></div>
+            <div id="image-preview-error" hidden class="form-error"></div>
+        </div>
+        <div class="image-upload-comment" style="margin-bottom: 8px">
+            <div>Please choose a JPEG, PNG, or GIF of greater than 5KB and less than 10MB size.</div>
+            <div>Images above 5MB in size will be compressed.</div>
+        </div>
+        <div id="croppieDivId"></div>
+    </div>
+</div>
+
+
+
+<div class="modal-delete-container" id="modal-delete-open">
+    <div class="modal-delete">
+        <div class="modal-header">
+            <div class="modal-title">
+                Delete Profile Picture Confirmation
+            </div>
+
+            <div class="modal-close-button" id="modal-delete-x">&times;</div>
+        </div>
+        <div class="border-line"></div>
+        <div class="modal-body">
+            Are you sure you want to delete your profile picture?
+        </div>
+        <div class="modal-buttons">
+            <button class="button" id="modal-delete-cancel">Cancel</button>
+            <button class="button dangerous-button" id="modal-delete-confirm">Delete</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" th:src="@{scripts/edit_user_photo.js}"></script>
+
+<style>
+    input, textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .edit-crop-photo {
+        display: flex;
+        justify-content: center;
+        margin: 0 40px 0 40px;
+    }
+
+</style>
+</html>

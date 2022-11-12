@@ -1,0 +1,28 @@
+.pageLayout {
+
+}
+
+.pageLayout > main {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 142px 100px 100px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 960px) {
+    .pageLayout > main {
+        padding: 0 75px 50px 30px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .pageLayout > main {
+        padding: 0 40px 30px 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .pageLayout > main {
+        padding: 0 30px 20px 15px;
+    }
+}

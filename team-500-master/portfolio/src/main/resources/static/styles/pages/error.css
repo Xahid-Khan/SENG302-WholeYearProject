@@ -1,0 +1,32 @@
+/**
+ * Styles for the error pages
+ */
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.error-container {
+    margin: 0;
+    padding: 15px;
+    display: inline-block;
+
+    /* Thanks to: https://www.w3.org/Style/Examples/007/center.en.html#vertical3 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-container > h1 {
+    margin: 0;
+}
+
+.error-container > p {
+    margin-top: 5px;
+}
+
+.error-container .actions > *:not(:last-child){
+    margin-right: 8px;
+}

@@ -1,0 +1,52 @@
+.table {
+    width: 100%;
+    margin-left:auto;
+    margin-right:auto;
+    display: table;
+}
+
+.table .tableRow {
+    display: table-row;
+}
+
+.table  .tableCell {
+    display: table-cell;
+}
+
+.table .sortableHeader {
+    background-color: #43C0FE;
+    transition-duration: 0.4s;
+    color: white;
+ }
+
+.table .sortableHeader:hover {
+    background-color: #0332D1;
+}
+
+.table .tableCell {
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table .tableRow:hover {
+    background-color: #aaaaaa;
+}
+
+.headerSortDown:after,
+.headerSortUp:after {
+    content: ' ';
+    position: relative;
+    left: 2px;
+    border: 8px solid transparent;
+}
+
+.headerSortDown:after {
+    top: 10px;
+    border-top-color: white;
+}
+
+.headerSortUp:after {
+    bottom: 10px;
+    border-bottom-color: white;
+}

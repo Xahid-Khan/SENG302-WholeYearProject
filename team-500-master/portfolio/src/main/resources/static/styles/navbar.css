@@ -1,0 +1,78 @@
+/*
+Adapted from W3 Schools.
+ */
+
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* The dropdown container */
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropbutton {
+    padding: 10px;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+    display: flex;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+}
+
+/* Links inside the dropdown */
+.dropdown-content-links {
+    float: none;
+    color: black;
+    padding: 6px 14px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 16px;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content-links:hover {
+    background-color: #ccc;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.username {
+    padding-right: 15px;
+    font-size: 18px;
+    margin-top: 13px;
+}
+
+.account {
+    flex: 1;
+    justify-content: right;
+}
+
+@media (max-width: 640px) {
+
+    .navbar {
+        margin-bottom: 0;
+    }
+}

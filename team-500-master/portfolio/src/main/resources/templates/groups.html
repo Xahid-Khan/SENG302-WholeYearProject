@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Groups</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{styles/common.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/project_details.css}">
+  <link rel="stylesheet" th:href="@{styles/navbar.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/groups.css}">
+  <link rel="stylesheet" th:href="@{styles/table.css}"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--  Taken from https://stackoverflow.com/a/25688291  -->
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    window.localStorage.setItem("userId", [[${userId}]] + "")
+    window.localStorage.setItem("isTeacher", [[${isTeacher}]] + "")
+    window.localStorage.setItem("isAdmin", [[${isCourseAdmin}]] + "")
+    window.relativePath = /*[[${relativePath}]]*/ 'default';
+    window.localStorage.setItem("relativePath", [[${relativePath}]] + "")
+    window.localStorage.setItem("globalImagePath", [[${globalImagePath}]] + "")
+    window.localStorage.setItem("globalUrlPathPrefix", [[${globalUrlPathPrefix}]] + "")
+
+    /*]]>*/
+  </script>
+  <script type="text/javascript" th:src="@{frontend/navbar.js}" defer></script>
+  <script type="text/javascript" th:src="@{frontend/groups.js}" defer></script>
+  <script type="text/javascript" th:src="@{frontend/navbar_entry.js}"></script>
+  <script type="text/javascript" th:src="@{scripts/navbar.js}"></script>
+  <script type="text/javascript" th:src="@{frontend/groups_entry.js}"></script>
+  <script type="text/javascript" th:src="@{scripts/groups.js}"></script>
+</head>
+<body>
+<div id="navbar-react-root"></div>
+<div id="react-root"></div>
+</body>
+</html>

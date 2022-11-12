@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Log in</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{styles/common.css}" />
+  <link rel="stylesheet" th:href="@{styles/modal_form.css}">
+</head>
+
+<body>
+    <form action="#" th:action="@{login}" th:object="${login}" method="post" class="raised-card form">
+      <div style="display: flex">
+        <img th:src="@{images/SprintrLogo.png}" style="width: 128px" alt="Sprintr Logo"/>
+        <h1 class="title">Welcome back to SENG Sprintr!</h1>
+      </div>
+      <h2>Log in here</h2>
+
+      <!--    Submits a populated UserDTO to endpoint register -->
+      <input type="text" th:field="*{username}" placeholder="username" autofocus/>
+      <input type="password" th:field="*{password}" placeholder="password"/>
+
+      <div class="form-error" th:if="${error != null}" th:text="${error}"></div>
+
+      <button name="login" type="submit" value=”0”>Log In</button>
+      <a href="register">New here? Join SENG Sprintr!</a>
+    </form>
+
+</body>
+</html>

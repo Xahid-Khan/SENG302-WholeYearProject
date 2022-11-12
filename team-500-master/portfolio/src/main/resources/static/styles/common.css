@@ -1,0 +1,142 @@
+/**
+ * Stylesheet for elements common across the portfolio application
+ */
+
+/* Globals */
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #ededec;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* Raised Card */
+.raised-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.30);
+  background: white;
+}
+
+raised-card-half {
+  width: 45%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.30);
+  background: white;
+}
+
+/* Buttons */
+button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #43C0FE;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 3px;
+  transition-duration: 0.4s;
+  font-size: 14px;
+  border-radius: 0.2rem;
+}
+
+.dangerous-button{
+  background-color: red;
+}
+
+button:hover {
+  background-color: #0332D1;
+}
+
+.dangerous-button:hover{
+  background-color: darkred;
+}
+
+button[disabled],
+button[disabled]:hover {
+  background-color: rgba(0,0,0,0.24);
+  cursor: not-allowed;
+}
+
+/* inputs */
+input, textarea {
+  padding: 5px;
+  background-color: transparent;
+  color: black;
+  box-sizing: border-box;
+}
+
+/* form info */
+.form-error {
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+}
+
+.fc .fc-event.fc-event-draggable {
+  border-right: 5px solid #2C3E50;
+  border-left: 5px solid #2C3E50;
+}
+
+.modal-delete {
+  background-color: #fff;
+  margin: 20% auto;
+  width: 40%;
+  border: black solid 1px;
+  border-radius: 20px;
+  padding: 20px 20px 50px 20px;
+}
+
+.modal-container {
+  display: none;
+  z-index:1;
+  background-color: rgba(0,0,0,0.3);
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-header{
+  display: flex;
+}
+
+.modal-buttons{
+  flex: 1;
+  float: right;
+}
+.modal-close-button{
+  flex: 1;
+  float: right;
+}
+.modal-close-button:hover{
+  cursor: pointer;
+}
+.modal-title{
+  font-size: 20px;
+  width: 100%;
+}
+
+.modal-body{
+  width: 100%;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+.border-line{
+  border-top: #666666 solid 1px;
+  margin: 10px 0;
+}
+.commit-box {
+  float: right;
+  max-width: 49%;
+  overflow-wrap: anywhere;
+}
+
+.branch-box {
+  float: left;
+  max-width: 49%;
+  overflow-wrap: anywhere;
+}

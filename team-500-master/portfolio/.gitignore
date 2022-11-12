@@ -1,0 +1,4 @@
+src/main/resources/static/app/
+localdb/
+node/
+yarn/

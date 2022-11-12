@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-padding {
+    padding: 5%;
+    margin: 6% 40px;
+}
+
+a.buttonLink[disabled='disabled'] {
+    visibility: hidden;
+}
+
+a.buttonLink {
+    color: #fff;
+    cursor: pointer;
+    background-color: #43C0FE;
+    border: none;
+    padding: 8px 12px;
+    transition-duration: 0.4s;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+a.buttonLink:hover {
+    background-color: #0332D1;
+}
+
+#pageNumber {
+    text-align: center;
+}
+
+.add-button {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    width: 25px;
+    font-family: inherit;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    color: #888;
+    background-color: #cecece;
+    transition-duration: 0.4s;
+}
+
+.add-button[disabled='disabled'] {
+    display: none;
+}
+
+.add-button:hover {
+    color: #000;
+    background-color: #cecece;
+}
+
+.dropdown-box:hover .add-button{
+    transform: rotate(90deg);
+}
+
+.roles-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+  <title>Your Info</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Your Info</h1>
+
+<p th:text="'Name: ' + ${user.firstName}" />
+<p th:text="'Last: ' + ${user.lastName}" />
+<p th:text="'Username: ' + ${user.username}" />
+<p th:text="'Password: ' + ${user.password}" />
+
+</body>
+</html>

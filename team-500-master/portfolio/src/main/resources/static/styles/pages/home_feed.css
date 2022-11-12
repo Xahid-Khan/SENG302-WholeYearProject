@@ -1,0 +1,36 @@
+.groups-feed {
+    padding: 20px;
+    margin: 6% 40px;
+}
+
+.home-feed-post {
+    padding: 15px;
+    margin: 20px;
+}
+
+.post-user-image{
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.post-time {
+    font-size: 10px;
+}
+
+.post-unsubscribe {
+    float: right;
+    cursor: pointer;
+}
+
+.post-body {
+    padding: 15px 0 10px 0;
+    white-space: pre-wrap;
+}
+
+.post-info {
+    width: 100%;
+}
+
+.post-header {
+    display: flex;
+}

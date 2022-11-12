@@ -1,0 +1,8 @@
+.toast {
+    background: #7f7e82;
+    color: white;
+}
+
+.toast .body .subtitle {
+    color: lightgray;
+}

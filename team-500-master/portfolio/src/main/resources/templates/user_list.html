@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Users</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{styles/common.css}"/>
+  <link rel="stylesheet" th:href="@{styles/table.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/project_details.css}"/>
+  <link rel="stylesheet" th:href="@{styles/navbar.css}"/>
+  <link rel="stylesheet" th:href="@{styles/chip.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/user_list.css}"/>
+  <link rel="stylesheet" th:href="@{styles/dropdown.css}"/>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    window.localStorage.setItem("globalImagePath", [[${globalImagePath}]] + "")
+    window.localStorage.setItem("globalUrlPathPrefix", [[${globalUrlPathPrefix}]] + "")
+    /*]]>*/
+  </script>
+  <script type="text/javascript" th:src="@{scripts/user_list.js}"></script>
+  <script type="text/javascript" th:src="@{frontend/navbar.js}" defer></script>
+  <script type="text/javascript" th:src="@{frontend/navbar_entry.js}"></script>
+  <script type="text/javascript" th:src="@{scripts/navbar.js}"></script>
+</head>
+<body>
+<div style="display: none">
+  <!-- FRAGMENT DEFINITIONS -->
+  <th:block th:fragment="columnHeaderFragment (sortAttribute, displayName)">
+    <a
+        class="tableCell sortableHeader buttonLink"
+        th:classappend="${
+                (sortAttribute==sortBy) ? (
+                    (sortDir==true) ? 'headerSortUp' : 'headerSortDown'
+                ) : ''}"
+        th:with="targetSortDirection=${sortBy == sortAttribute ? !sortDir : true}"
+        th:href="${delegate.formatUrl(currentPage, sortAttribute, targetSortDirection)}"
+        th:text="${displayName}"
+    ></a>
+  </th:block>
+</div>
+
+<div id="navbar-react-root"></div>
+
+<div class="raised-card card-padding">
+  <h1>Users</h1>
+  <th:block th:if="${#lists.isEmpty(users)}">
+    <p>No users to display on this page</p>
+    <a class="buttonLink" th:disabled="${currentPage==0}"
+       th:href="${delegate.formatUrl(1, sortBy, sortDir)}">First Page</a>
+  </th:block>
+  <th:block th:if="${not #lists.isEmpty(users)}">
+    <div class="container">
+                <span th:with="pageEndOffset=${pageOffset + users.size()}">
+                    Displaying users <span th:text="${pageOffset + 1}"></span> - <span
+                    th:text="${pageEndOffset}"></span> of <span th:text="${totalUserCount}"></span>
+                </span>
+      <div>
+                    <span th:with="prevPage=${currentPage - 1}">
+                        <a class="buttonLink" th:disabled="${prevPage<=1}"
+                           th:href="${delegate.formatUrl(1, sortBy, sortDir)}">First Page</a>
+                        <a class="buttonLink" id='previous' th:disabled="${prevPage==0}"
+                           th:href="${delegate.formatUrl(prevPage, sortBy, sortDir)}">Previous Page</a>
+                    </span>
+        <span th:with="nextPage=${currentPage + 1}">
+                        <th:block
+                            th:with="maxPage=${(totalUserCount/pageSize) + ((totalUserCount % pageSize == 0) ? 0 : 1)}">
+                            <label for="pageNumber">Go to page</label>
+                            <input type="number" id="pageNumber" th:value="${currentPage}" min="1"
+                                   th:max="${maxPage}">
+                            <a class="buttonLink" th:attr="onclick=|goToPage('${maxPage}')|">Go</a>
+                            <a class="buttonLink" id='next' th:disabled="${nextPage>maxPage}"
+                               th:href="${delegate.formatUrl(nextPage, sortBy, sortDir)}">Next Page</a>
+                            <a class="buttonLink" id='last' th:disabled="${nextPage>maxPage - 1}"
+                               th:href="${delegate.formatUrl(maxPage, sortBy, sortDir)}">Last Page</a>
+                        </th:block>
+                    </span>
+
+      </div>
+    </div>
+    <br/>
+    <div class="table">
+      <div class="tableRow">
+        <th:block th:include="::columnHeaderFragment ('name', 'Name')"></th:block>
+        <th:block th:include="::columnHeaderFragment ('username', 'Username')"></th:block>
+        <th:block th:include="::columnHeaderFragment ('alias', 'Nickname')"></th:block>
+        <th:block th:include="::columnHeaderFragment ('roles', 'Roles')"></th:block>
+      </div>
+      <div class="tableRow" th:each="user: ${users}">
+        <div class="tableCell"
+             th:text="${user.firstName} + ' ' + (${user.middleName} ?: '') + ' ' + ${user.lastName} + ${(user.id == userId) ? ' (You)' : ''}"/>
+        <div class="tableCell" th:text="${user.username}"/>
+        <div class="tableCell" th:text="${user.nickname}"/>
+        <div class="tableCell">
+          <div class="roles-container">
+            <div class="chip-row">
+              <div th:each="role: ${user.rolesList}">
+                <form class="chip"
+                      th:disabled="${isTeacher==false or user.id == userId or user.rolesList.size()==1}"
+                      th:method="delete">
+                  <input type="hidden" th:name="action" th:value="remove"/>
+                  <input type="hidden" th:name="id" th:value="${user.id}"/>
+                  <input type="hidden" th:name="roleNumber" th:value="${role.number}"/>
+                  <span class="label" th:text="${delegate.formatUserRole(role)}"/>
+                  <button class="button remove-button"
+                          onclick="this.parentElement.style.display='none'" type="submit">
+                    &times;
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="dropdown-box" th:with="roles=${delegate.getAvailableRoles(user)}">
+              <button class="button add-button"
+                      th:disabled="${isTeacher==false or user.id==userId or roles.size()==0}">
+                +
+              </button>
+              <div class="dropdown-content">
+                <div th:each="role:${roles}">
+                  <form th:method="post">
+                    <input type="hidden" th:name="id" th:value="${user.id}"/>
+                    <input type="hidden" th:name="roleNumber" th:value="${role.number}"/>
+                    <button class="dropdown-option" th:text="${delegate.formatUserRole(role)}"
+                            type="submit"></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="form-error" th:if="${roleMessage != null && roleMessageTarget == user.id}"
+                 th:text="${roleMessage}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</div>
+</body>
+</html>
+
+

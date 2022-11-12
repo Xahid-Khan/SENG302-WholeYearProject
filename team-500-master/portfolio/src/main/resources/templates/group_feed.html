@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Group Feed</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{../styles/common.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/pages/project_details.css}">
+    <link rel="stylesheet" th:href="@{../styles/navbar.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/pages/group_feed.css}">
+    <link rel="stylesheet" th:href="@{../styles/table.css}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--  Taken from https://stackoverflow.com/a/25688291  -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.localStorage.setItem("userId", [[${userId}]] + "")
+        window.localStorage.setItem("isStudent", [[${isStudent}]] + "")
+        window.localStorage.setItem("globalImagePath", [[${globalImagePath}]] + "")
+        window.localStorage.setItem("globalUrlPathPrefix", [[${globalUrlPathPrefix}]] + "")
+        window.localStorage.setItem("isMember", [[${isMember}]] + "")
+        /*]]>*/
+    </script>
+    <script type="text/javascript" th:src="@{../frontend/navbar.js}" defer></script>
+    <script type="text/javascript" th:src="@{../frontend/group_feed.js}" defer></script>
+    <script type="text/javascript" th:src="@{../frontend/navbar_entry.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/navbar.js}"></script>
+    <script type="text/javascript" th:src="@{../frontend/feed_pages_entry.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/feed_pages.js}"></script>
+</head>
+<body>
+<div id="navbar-react-root"></div>
+<div th:text="${groupName}" class="group-feed-title" id="group-feed-title" style="display: none"></div>
+<div id="react-root"></div>
+
+<div class="modal-delete-container" id="modal-delete-open">
+    <div class="modal-delete">
+        <div class="modal-header">
+            <div class="modal-title">
+                Delete Group Post Confirmation
+            </div>
+            <div class="modal-close-button" id="modal-delete-x">&times;</div>
+        </div>
+        <div class="border-line"></div>
+        <div class="modal-delete-body">
+            Are you sure you want to delete your Post?
+        </div>
+        <div class="modal-buttons">
+            <button class="button" id="modal-delete-cancel">Cancel</button>
+            <button class="button dangerous-button" id="modal-delete-confirm">Delete</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

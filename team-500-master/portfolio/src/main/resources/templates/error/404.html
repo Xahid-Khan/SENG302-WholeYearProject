@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Page not found</title>
+
+    <link type="text/css" rel="stylesheet" th:href="@{/styles/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/styles/pages/error.css}"/>
+</head>
+
+<body>
+<div class="raised-card error-container">
+    <h1>404 - Page not found!</h1>
+    <p>A page at that URL doesn't exist.</p>
+    <div class="actions">
+        <button th:data-global-url-path-prefix="${globalUrlPathPrefix}" onclick="window.location.href = (this.getAttribute('data-global-url-path-prefix') ?? '') + '/login'">Go Home</button>
+    </div>
+</div>
+</body>
+</html>

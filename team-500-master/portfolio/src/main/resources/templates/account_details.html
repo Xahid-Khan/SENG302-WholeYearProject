@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Account</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" th:href="@{styles/common.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/account_details.css}"/>
+  <link rel="stylesheet" th:href="@{styles/pages/project_details.css}">
+  <link rel="stylesheet" th:href="@{styles/navbar.css}"/>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    window.localStorage.setItem("userId", [[${userId}]] + "")
+    window.localStorage.setItem("globalImagePath", [[${globalImagePath}]] + "")
+    window.localStorage.setItem("globalUrlPathPrefix", [[${globalUrlPathPrefix}]] + "")
+    window.localStorage.setItem("username", [[${username}]] + "")
+    /*]]>*/
+  </script>
+  <script type="text/javascript" th:src="@{frontend/navbar.js}" defer></script>
+  <script type="text/javascript" th:src="@{frontend/navbar_entry.js}"></script>
+  <script type="text/javascript" th:src="@{scripts/navbar.js}"></script>
+
+</head>
+<body>
+<div id="navbar-react-root"></div>
+<div class="raised-card card-padding">
+  <div class="container">
+    <div class="name-container">
+      <div class="image-container" style="padding:0">
+        <img id="userPhoto" th:src="'//' + ${globalImagePath} + ${userId}"
+             onerror="this.onerror=null;this.src='https://humanimals.co.nz/wp-content/uploads/2019/11/blank-profile-picture-973460_640.png'"
+             width="150" height="150" alt="Placeholder Profile Photo">
+      </div>
+      <div class="left-padding">
+        <h1 th:text="${user.firstName} + ' ' + ${user.middleName} + ' ' + ${user.lastName}"/>
+      </div>
+    </div>
+    <div>
+    </div>
+    <div class="right-padding">
+      <div>
+        <button class="button" onclick="location.href='edit_user_image'" type="button">Edit Profile
+          Photo
+        </button>
+        <button class="button" onclick="location.href='edit_account'" type="button">Edit Details
+        </button>
+        <button class="button" onclick="location.href='edit_password'" type="button">Edit Password
+        </button>
+      </div>
+      <div class="edit-message" th:if="${editMessage != null}" th:text="${editMessage}">
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <table style="white-space: break-spaces">
+      <tr th:if="${user.nickname != ''}">
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Nickname: '"/></td>
+        <td><p style="margin: 10px 0 10px 0" th:text="${user.nickname}"></p></td>
+      </tr>
+      <tr th:if="${user.personalPronouns != ''}">
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Pronouns: '"/></td>
+        <td><p style="margin: 10px 0 10px 0" th:text="${user.personalPronouns}"></p></td>
+      </tr>
+      <tr>
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Username: '"/></td>
+        <td><p style="margin: 10px 0 10px 0" th:text="${user.username}"></p></td>
+      </tr>
+      <tr>
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Email: '"/></td>
+        <td><p style="margin: 10px 0 10px 0" th:text="${user.email}"></p></td>
+      </tr>
+      <tr>
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Roles: '"/></td>
+        <td><p style="margin: 10px 0 10px 0"
+               th:text="${delegate.formatUserRoles(user.rolesList)}"></p></td>
+      </tr>
+      <tr>
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Member since: '"/></td>
+        <td><p style="margin: 10px 0 10px 0"
+               th:text="${delegate.getFormattedDate(user.getCreated())}"></p></td>
+      </tr>
+      <tr th:if="${user.bio != ''}">
+        <td style="width: 175px"><h3 style="margin: 10px 0 10px 0" th:text="'Bio: '"/></td>
+        <td><p style="margin: 10px 0 10px 0" th:text="${user.bio}"></p></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+
+</html>

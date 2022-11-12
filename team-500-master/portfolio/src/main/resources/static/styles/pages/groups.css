@@ -1,0 +1,266 @@
+.add-group {
+    display: flex;
+    justify-content: right;
+    padding-right: 50px;
+}
+
+.add-group-button {
+    margin-bottom: 13px;
+}
+
+.groups {
+    padding: 10px 50px 50px 50px;
+    margin: 0 40px
+}
+
+.group {
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.groups-header {
+    display: table-row;
+}
+
+.groups-row {
+    display: table-row;
+    cursor: default;
+}
+
+.modal-create-group {
+    background-color: #fff;
+    margin: 20% auto;
+    width: 40%;
+    border: black solid 1px;
+    border-radius: 20px;
+    padding: 20px 20px 50px 20px;
+}
+
+.modal-edit-group-members {
+    background-color: #fff;
+    margin: 5% auto;
+    width: 80%;
+    border: black solid 1px;
+    border-radius: 20px;
+    padding: 20px 20px 50px 20px;
+}
+
+.modal-edit-group-members-body {
+    width: 100%;
+}
+
+.edit-group-members-container {
+    display: flex;
+}
+
+.filter-groups {
+    float: right;
+}
+
+.filter-groups-header {
+    display: flex;
+}
+
+.filter-label {
+    float: right;
+    padding: 8px 5px 0 0;
+}
+
+.filter-groups-options {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.filter-option-button {
+    background-color: #f9f9f9;
+    color: black;
+}
+
+.filter-option-button:hover {
+    background-color: #ccc;
+}
+
+.filter-groups-dropdown:hover .filter-groups-options {
+    display: flex;
+}
+
+.edit-group-button {
+    float: right;
+    margin-right: 25px;
+}
+
+.groups-table {
+    -webkit-user-select: none; /*Taken from https://www.w3schools.com/howto/howto_css_disable_text_selection.asp */
+    -ms-user-select: none; /*Taken from https://www.w3schools.com/howto/howto_css_disable_text_selection.asp */
+    user-select: none; /*Taken from https://www.w3schools.com/howto/howto_css_disable_text_selection.asp */
+}
+
+.user-list-table {
+    overflow-y: auto;
+    max-height: 40vh;
+}
+
+.groups-page-user-list {
+    overflow-y: auto;
+    max-height: 20vh;
+}
+.groups-page-repository{
+    overflow-y: auto;
+    overflow-x: clip;
+    max-height: 40vh;
+}
+
+.toggle-group-details {
+    float: right;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.edit-group-members-error {
+    padding: 10px;
+    text-align: center;
+    color: red;
+}
+
+.current-group {
+    width: 50%;
+    padding: 5px;
+}
+
+.other-group-users {
+    width: 50%;
+    padding: 5px;
+}
+
+.edit-group-members-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 130px
+}
+
+.edit-group-members-button {
+    margin: 4px;
+}
+
+.input-name {
+    margin: 4px 8px;
+}
+
+.delete-group {
+    float: right;
+}
+
+.delete-group:hover {
+    cursor: pointer;
+}
+
+.groups-header {
+    display: table-row;
+}
+
+.group-title-header{
+    /*    have title on left side and button on right side*/
+    display: flex;
+    align-items: center;
+}
+.group-name-long{
+    display: flex;
+    padding-right: 5px;
+}
+
+.edit-group{
+    float: right;
+}
+
+.modal-delete-container{
+    display: none;
+    z-index:1;
+    background-color: rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-edit-header{
+    display: flex;
+}
+
+.modal-edit-buttons{
+    flex: 1;
+    float: right;
+}
+.modal-edit-close-button{
+    flex: 1;
+    float: right;
+}
+.modal-edit-close-button:hover{
+    cursor: pointer;
+}
+.modal-edit-title{
+    font-size: 20px;
+    width: 100%;
+}
+.modal-edit-body{
+    width: 90%;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.modal-size {
+    width: 50%;
+    height: 50%;
+
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translate(-50%, -50%);
+}
+
+.group-settings {
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.modal-group-settings {
+    background-color: #fff;
+    margin: 5% auto;
+    width: 80%;
+    border: black solid 1px;
+    border-radius: 20px;
+    padding: 20px 20px 50px 20px;
+}
+
+
+.edit-group-settings-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.edit-group-settings {
+    width: 45%;
+}
+
+.edit-group-form {
+    padding: 15px 15px 45px;
+}
+
+.show-group-feed-button {
+    float: right;
+    padding-right: 15px;
+}
+
+.subscribe-button {
+    float: right;
+    padding-right: 15px;
+}
